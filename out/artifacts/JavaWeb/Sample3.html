@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JSON转字符串</title>
+</head>
+<body>
+    <script type="text/javascript">
+      var json1 = {"classname":"五年级四班"};
+      var srt1 = JSON.stringify(json1);
+      console.info(json1);
+      console.info(srt1);
+      document.write(srt1);
+      var json2 = {};
+      json2.classname = "五年级五班";
+      json2.teacher = "白敬亭";
+      document.write(JSON.stringify(json2));
+    </script>
+</body>
+</html>

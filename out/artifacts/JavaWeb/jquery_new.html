@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $.ajax({
+                "url":"/JavaWeb/news_list1",
+                "type":"get",
+                "data":{"t":"pypl","abc":"1234"}, // json格式传入参数
+                // "data":"t=tiobe", // 字符串url的格式传入参数
+                dataType:"json",
+                "success":function (json){
+                    console.log(json)
+                },
+                "error":function (xmlhttp,errorText){
+                    console.log(xmlhttp);
+                    console.log(errorText);
+                    if(xmlhttp.status == "405"){
+                        alert("无效的请求");
+                    }else if(xmlhttp.status == "404"){
+                        alert("未找到资源");
+                    }else if(xmlhttp.status == "500"){
+                        alert("服务器内部错误，请联系管理员");
+                    }else {
+                        alert("产生异常，请联系管理员");
+                    }
+                }
+            })
+        })
+    </script>
+</head>
+<body>
+
+</body>
+</html>

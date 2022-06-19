@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        var json = [
+            {
+                "empno": 7369,
+                "ename": "李宁",
+                "job": "软件工程师",
+                "hiredate": "2017-05-12",
+                "salary": 13000,
+                "dname": "研发部"
+            },
+            {
+                "empno": 7499,
+                "ename": "王乐",
+                "job": "客户经理",
+                "hiredate": "2017-04-12",
+                "salary": 10000,
+                "dname": "市场部",
+                "customers": [
+                    {
+                        "cname": "李东"
+                    },
+                    {
+                        "cname": "李楠"
+                    }
+                ]
+            }
+        ]
+        console.log(json);
+
+        for (var i = 0; i < json.length; i++) {
+            var emp = json[i];
+            document.write("<h1>");
+            document.write(emp.empno);
+            document.write(","+emp.ename);
+            document.write(","+emp.job);
+            document.write(","+emp.dname);
+            document.write(","+emp.hiredate);
+            document.write(","+emp.salary);
+            document.write("</h1>");
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

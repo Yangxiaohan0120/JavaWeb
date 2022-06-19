@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="container">
+</div>
+
+<script type="text/javascript">
+    //1.闯将XMLHttpRequest
+    var xmlhttp;
+    if (window.XMLHttpRequest) {
+        xmlhttp = new XMLHttpRequest();
+    } else {
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    //2.发送请求
+    // true 代表异步执行 ， false 代表同步执行
+
+    //异步
+    xmlhttp.open("GET", "/JavaWeb/news_list", true);
+    xmlhttp.send();
+    // 立即完成
+    console.log("请求发送完成");
+
+    //3.服务器响应
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            var t = xmlhttp.responseText;
+            console.log(t);
+            var json = JSON.parse(t); //JavaSrcipt内置对象
+            console.log(json);
+            var html = "";
+            for (var i = 0; i < json.length; i++) {
+                var news = json[i];
+                html = html + "<h1>" + news.title + "</h1>";
+                html = html + "<h2>" + news.date + "&nbsp;" + news.source + "</h2>";
+                html = html + "<hr/>";
+            }
+            document.getElementById("container").innerHTML = html;
+        }
+    }
+
+    //同步
+    // xmlhttp.open("GET", "/JavaWeb/news_list", false);
+    // xmlhttp.send();
+    // 同步完成的
+    // console.log("请求发送完成");
+    //
+    // //3.服务器响应
+    // if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+    //     var t = xmlhttp.responseText;
+    //     console.log(t);
+    //     var json = JSON.parse(t); //JavaSrcipt内置对象
+    //     console.log(json);
+    //     var html = "";
+    //     for (var i = 0; i < json.length; i++) {
+    //         var news = json[i];
+    //         html = html + "<h1>" + news.title + "</h1>";
+    //         html = html + "<h2>" + news.date + "&nbsp;" + news.source + "</h2>";
+    //         html = html + "<hr/>";
+    //     }
+    //     document.getElementById("container").innerHTML = html;
+    // }
+
+</script>
+</body>
+</html>
